@@ -1,0 +1,23 @@
+<div class="home-component">
+
+  <div class="container">
+
+    <div style="margin-bottom: 40px">
+
+      <p class="center-align no-margin"><b>Цена</b></p>
+
+      <ion-range-slider type="double" [min]="priceLimitMin" [max]="priceLimitMax"
+                        (onChange)="sliderUpdate($event)"></ion-range-slider>
+
+    </div>
+
+    <div class="apartments-list">
+      <div class="apartment-item" *ngFor="let item of items | byprice:priceMin:priceMax:'price_ruble'" [routerLink]="['./detail', item.id]">
+        <apartment-card [item]="item"></apartment-card>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

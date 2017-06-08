@@ -1,0 +1,85 @@
+<div class="detail-component">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col s8">
+
+        <div *ngIf="isReady">
+
+          <div class="card">
+
+            <img class="card-img" src="{{apartment.preview_url}}" alt="{{apartment.name}}">
+
+            <div class="card-content">
+
+              <h5>{{apartment.name}}</h5>
+              <p>{{apartment.country}}</p>
+
+
+              <p class="oriented-price">Ориентировочная цена</p>
+
+              <div><b>$ {{apartment.price_dollar}}</b> / <span>{{apartment.price_ruble}}</span> руб</div>
+
+              <div class="props-block">
+                <div class="row">
+
+                  <div class="col s6">
+                    Район
+                  </div>
+
+                  <div class="col s6">
+                    {{apartment.district}}
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col s6">
+                    Метро
+                  </div>
+
+                  <div class="col s6">
+                    {{apartment.metro}}
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col s6">
+                    Тип дома
+                  </div>
+
+                  <div class="col s6">
+                    {{apartment.type}}
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col s6">
+                    Этажность
+                  </div>
+
+                  <div class="col s6">
+                    {{apartment.levels}}
+                  </div>
+                </div>
+              </div>
+
+              <p class="description" [innerHTML]="apartment.description"></p>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col s4">
+        <contact-us></contact-us>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,19 @@
+apartment-card {
+  display: flex;
+  .card {
+    display: flex;
+    cursor: pointer;
+    max-width: 348px;
+    margin: 8px;
+    img {
+      border-radius: 2px;
+    }
+    .oriented-price {
+      margin-top: 16px;
+    }
+    .name {
+      height: 44px;
+      max-height: 44px;
+    }
+  }
+}

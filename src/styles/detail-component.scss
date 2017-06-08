@@ -1,0 +1,32 @@
+.detail-component {
+  .card {
+    max-width: 600px;
+    margin: 24px auto;
+
+    .card-content {
+      padding-top: 8px;
+    }
+
+    h5 {
+      margin-top: 10px;
+    }
+
+    p.oriented-price {
+      margin-top: 16px;
+    }
+
+    .props-block {
+      margin: 16px;
+    }
+
+    .description {
+      margin-top: 16px;
+    }
+
+    .card-img {
+
+      width: 100%;
+
+    }
+  }
+}

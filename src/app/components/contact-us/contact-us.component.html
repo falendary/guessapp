@@ -1,0 +1,27 @@
+<div class="contact-us-component">
+
+  <div *ngIf="!isSent">
+
+    <h5>Свяжитесь с нами</h5>
+
+    <div>
+      <label for="">Имя</label>
+      <input type="text" placeholder="Сергей" [(ngModel)]="name">
+    </div>
+
+    <div>
+      <label for="">Телефон</label>
+      <input type="tel" placeholder="+7 842 443-42-42" [(ngModel)]="phone">
+    </div>
+
+    <button class="waves-effect waves-light btn" [disabled]="!checkButton()" (click)="contactUs()">Отправить</button>
+
+  </div>
+
+  <div *ngIf="isSent">
+
+    <h5 class="center-align">Спасибо вам, мы вам скоро перезвоним!</h5>
+
+  </div>
+
+</div>
