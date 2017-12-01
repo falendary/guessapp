@@ -2,19 +2,43 @@
 
   <div class="container">
 
-    <div style="margin-bottom: 40px">
+    <h5>The rules are simple</h5>
 
-      <p class="center-align no-margin"><b>Цена</b></p>
+    <p>To win the game you need to:</p>
 
-      <ion-range-slider type="double" [min]="priceLimitMin" [max]="priceLimitMax"
-                        (onChange)="sliderUpdate($event)"></ion-range-slider>
+    <ol class="rules-list">
+
+      <li>
+        Guess a number in range from <input type="number" [(ngModel)]="min" (ngModelChange)="startNewGame()"
+                                            placeholder="min"> to <input
+        type="number"
+        [(ngModel)]="max" (ngModelChange)="startNewGame()"
+        placeholder="max"> <span *ngIf="min > max">Warning! Min should be lesser then Max</span>
+      </li>
+
+      <li>You have only 3 attempts (<b>{{attempts}}</b> attempts left)</li>
+
+    </ol>
+
+
+    <h5>Enter a number</h5>
+
+    <div>
+
+      <input type="number" [(ngModel)]="playerGuess" [disabled]="status != ''">
+
+      <button type="submit" (click)="guess()" [disabled]="status != ''">Submit</button>
 
     </div>
 
-    <div class="apartments-list">
-      <div class="apartment-item" *ngFor="let item of items | byprice:priceMin:priceMax:'price_ruble'" [routerLink]="['./detail', item.id]">
-        <apartment-card [item]="item"></apartment-card>
-      </div>
+    <div *ngIf="status == 'lose'">
+      <p>You lose</p>
+      <a (click)="startNewGame()">Try again</a>
+    </div>
+
+    <div *ngIf="status == 'win'">
+      <p>You win! Congratulations</p>
+      <a (click)="startNewGame()">Play more</a>
     </div>
 
   </div>

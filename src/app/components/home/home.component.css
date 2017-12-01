@@ -3,3 +3,9 @@
 .home-component {
   padding-top: 16px;
 }
+
+.rules-list input {
+  display: inline;
+  width: 40px;
+  height: initial;
+}

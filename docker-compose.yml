@@ -1,0 +1,16 @@
+web:
+  build: .
+  volumes:
+    - "./app:/src/app"
+  ports:
+    - "3030:80"
+  links:
+    - mysql
+mysql:
+  image: mysql
+  container_name: guessapp_db
+  restart: always
+  environment:
+      - MYSQL_ROOT_PASSWORD=123456
+  volumes:
+      - "./data/db/mysql:/var/lib/mysql"

@@ -12,30 +12,16 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { AppComponent } from './components/app/app.component';
-import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from './components/home/home.component';
-import { DetailComponent } from './components/detail/detail.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { NoContentComponent } from './components/no-content/no-content.component';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
-import {ApartmentRepository} from "./repositories/apartment.repository";
-import {UserRepository} from "./repositories/user.repository";
-import {AuthRepository} from "./repositories/auth.repository";
-import {MetaRepository} from "./repositories/meta.repository";
-import {ByPricePipe} from "./pipes/byprice";
-import {IonRangeSliderModule} from "ng2-ion-range-slider/index";
-import {MaterializeModule} from "ng2-materialize/dist/index";
-import {ApartmentCardComponent} from "./components/apartment-card/apartment-card.component";
-
+import {AttemptService} from "./services/attempt.service";
 
 // Application wide providers
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
   AppState
 ];
 
@@ -52,14 +38,9 @@ type StoreType = {
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    LoginComponent,
-    DetailComponent,
-    HomeComponent,
-    ContactUsComponent,
-    ApartmentCardComponent,
-    NoContentComponent,
 
-    ByPricePipe
+    HomeComponent,
+
 
   ],
   /**
@@ -70,9 +51,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
-    MaterializeModule.forRoot(),
 
-    IonRangeSliderModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -81,10 +60,8 @@ type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS,
 
-    ApartmentRepository,
-    UserRepository,
-    AuthRepository,
-    MetaRepository
+    AttemptService
+
   ]
 })
 export class AppModule {

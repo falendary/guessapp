@@ -60,6 +60,8 @@ dll/
 # Doc #
 /doc/
 
+data
+
 # IDE #
 .idea/
 *.swp

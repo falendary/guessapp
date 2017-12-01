@@ -1,5 +1,5 @@
 {
-  "name": "housefind",
+  "name": "guessapp",
   "version": "1.0.0",
   "description": "Small test app",
   "keywords": [
@@ -9,7 +9,7 @@
     "typescript"
   ],
   "author": "Sergey Zhitenev <zhitenev36@gmail.com>",
-  "homepage": "https://github.com/falendary/housefind",
+  "homepage": "https://github.com/falendary/guessapp",
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
@@ -82,11 +82,12 @@
     "@angular/router": "~4.1.2",
     "@angularclass/hmr": "~1.2.2",
     "@angularclass/hmr-loader": "~3.0.2",
+    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
-    "ng2-ion-range-slider": "^1.0.3",
-    "ng2-materialize": "^1.4.2",
+    "mysql": "^2.15.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "~5.0.2",
     "zone.js": "0.8.5"
@@ -158,10 +159,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/falendary/housefind.git"
+    "url": "https://github.com/falendary/guessapp.git"
   },
   "bugs": {
-    "url": "https://github.com/falendary/housefind/issues"
+    "url": "https://github.com/falendary/guessapp/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

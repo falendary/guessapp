@@ -1,54 +1,73 @@
-import { Component, OnInit } from '@angular/core';
-
-import { AppState } from '../../app.service.ts';
-import { Title } from '../../services/title/title.service';
-import { XLargeDirective } from '../../directives/x-large/x-large.directive';
-import { ApartmentService } from "../../services/apartment/apartment.service";
-import {Apartment} from "../../models/apartment.model";
+import {Component, OnInit} from '@angular/core';
+import {AttemptService} from "../../services/attempt.service";
 
 @Component({
   selector: 'home',
-  providers: [ApartmentService],
+  providers: [AttemptService],
   styleUrls: ['./home.component.css'],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
-  public items:Apartment[];
+  public attempts: number = 3;
+  public playerGuess: number = null;
 
-  public priceLimitMin: number = 0;
-  public priceLimitMax: number = 10000000000;
+  public status: string = '';
 
-  public priceMin:number;
-  public priceMax:number;
+  public min: number = 1;
+  public max: number = 4;
 
-  constructor(public apartmentService:ApartmentService) {
+  public numberToGuess: number;
 
-    this.priceMin = this.priceLimitMin;
-    this.priceMax = this.priceLimitMax;
+  public random(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  constructor(private attemptService: AttemptService) {
 
   }
 
-  public ngOnInit() {
+  public guess(): void {
 
-    console.log('Home component');
+    if (this.numberToGuess == this.playerGuess) {
+      this.status = 'win';
+    } else {
 
-    this.getItems();
+      this.attempts = this.attempts - 1;
+
+      if (this.attempts == 0 ) {
+        this.status = 'lose';
+      }
+
+    }
+
+    let data = {
+      numberToGuess: this.numberToGuess,
+      playerGuess: this.playerGuess,
+      min: this.min,
+      max: this.max,
+      attempts_left: this.attempts
+    };
+
+    this.attemptService.guess(data);
 
   }
 
-  public sliderUpdate(event):void {
-    this.priceMin = event.from;
-    this.priceMax = event.to;
+  public startNewGame(): void {
+
+    this.playerGuess = null;
+    this.status = '';
+    this.attempts = 3;
+
+    this.numberToGuess = this.random(this.min, this.max);
+
   }
 
-  public getItems():void {
+  ngOnInit() {
 
-    this.apartmentService.getList().then(items => {
+    this.startNewGame();
 
-      this.items = items;
-
-    })
   }
+
 
 }
